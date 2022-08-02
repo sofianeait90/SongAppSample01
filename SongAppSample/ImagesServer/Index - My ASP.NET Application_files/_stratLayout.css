@@ -1,0 +1,50 @@
+﻿body {
+    background-image: url('../Images/pexels-marinko-krsmanovic-2651794.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+/*    background-image: linear-gradient(to right, rgb(200, 8, 238),rgb(112, 11, 246),rgb(250, 24, 236));*/
+}
+.card {
+    
+    min-height: 300px;
+    min-width: 250px;
+    color: azure;
+    elevation: lower;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom:30px;
+    background-image: linear-gradient(to right, rgb(200, 8, 238),rgb(112, 11, 246));
+    
+    
+}
+    /*.card:hover::after {
+        
+    }*/
+imageLogo{
+    
+    fill:azure;
+}
+.card-img-top {
+    height: 30%;
+    width: 100%;
+}
+.card-body {
+    
+    background-image: linear-gradient(to right, rgb(200, 8, 238),rgb(112, 11, 246));
+}
+
+.card-title {
+    
+    text-align:center;
+}
+.form-inline {
+        
+   
+}
+
+.btn_playlist{
+    background-color:transparent;
+    color:rgb(37, 37, 38);
+}
+
+

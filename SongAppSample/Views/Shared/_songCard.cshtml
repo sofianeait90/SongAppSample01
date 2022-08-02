@@ -1,0 +1,89 @@
+﻿@model SongAppSample.ViewModels.SongViewModel
+
+<div class="col-md-3 card-@Model.SongId" id="song-card" data-id="@Model.SongId">
+
+    <div class="card" id="song-card" style="width: 18rem; height:350px; ">
+        <div class="container-image">
+            <i class="fas fa-play" data-id="@Model.SongId" ></i>
+        </div>
+        @*<img class="card-img-top" id="songimg" src="~/Images/song2.png" alt="Card image cap">*@
+        <div class="card-body">
+            <text class="card-title" style="clear: both; display: inline-block; overflow: hidden; white-space: nowrap; max-width:100%"> @Model.SongTitle </text>
+
+            <h5>
+                @String.Format("{0:d}", Model.SongDateToAddToCollection)
+            </h5>
+            <h5> genre: @Model.GenreName</h5>
+            <h5>Album: @Html.ActionLink(Model.AlbumTitle, "Details", "Album", new { Id = Model.AlbumID }, new { })</h5>
+            @if (Model.PlayListId == 0)
+            {
+
+                <i class="fas fa-plus play-list-add" style="cursor:pointer" type="button" data-id="@Model.SongId" data-toggle="modal" data-target=".bd-example-modal-sm"> Add to   </i>
+            }
+
+
+            <h4 style=" text-align: end;
+        margin-right: 10px;
+        margin-bottom: 15px;
+        color: white;">
+
+                @Html.ActionLink(Model. ArtistName, "Index", "Artist", new { Id = Model.ArtistId }, new { })
+            </h4>
+            
+            <i class="@(Model.Liked == true ? "fas fa-heart heart-song" : "far fa-heart heart-song")"  style="cursor:pointer;font-size:x-large;" data-id="@Model.SongId"></i>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .fa-play{
+        margin-left:40%;
+        margin-top:15%;
+        color:azure;
+        opacity:0.3;
+        font-size:50px;
+        
+    }
+    .card {
+        min-height: 320px;
+        min-width: 260px;
+        color: azure;
+        elevation: lower;
+        border-radius: 5px;
+        padding: 8px;
+        margin-bottom: 30px;
+        background-image: linear-gradient(to right, rgb(200, 8, 238),rgb(112, 11, 246));
+    }
+        .card:hover {
+            filter: brightness(90%);
+            transform: rotate(1deg);
+            transition: transform 0.005s;
+        }
+
+
+    .container-image {
+        height: 40%;
+        background-image: url('../../Images/song2.png');
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        cursor:pointer;
+    }
+
+    .card-body {
+        background-image: linear-gradient(to right, rgb(200, 8, 238),rgb(112, 11, 246));
+    }
+
+    .card-title {
+        text-align: center;
+    }
+
+    .form-inline {
+    }
+
+    .btn_playlist {
+        background-color: transparent;
+        color: rgb(37, 37, 38);
+    }
+</style>

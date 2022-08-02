@@ -1,0 +1,64 @@
+﻿@model  IEnumerable<SongAppSample.ViewModels.SongViewModel>
+
+    <div class="row" id="songs" style="margin-top:30px">
+
+        @foreach (var song in Model)
+        {
+            @Html.Partial("_songCard",song)
+        }
+        </div>
+   
+
+    <script>
+
+
+        $(document).on("click", ".fa-play", function () {
+            var songId;
+            songId = $(this).data('id');
+
+            window.open('@Url.Action("Index","ListenNow")?id=' + songId); 
+        })
+
+
+            $(document).on("click", ".heart-song", function () {
+            var songId;
+                songId = $(this).data('id');
+
+
+                var likedSong = $.ajax({
+                    url: "api/Like/Add",
+                    data: { SongId: songId },
+                    type:"POST",
+                    success: function () {
+
+                        refreshCard(songId);
+
+
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                })
+            })
+            //function refreshCard(id) {
+            //    var response = $.ajax({
+            //        url: "/song/getcard/" + id,
+            //        type: "GET",
+            //        success: () => {
+            //            var el = document.getElementsByClassName("card-" + id);
+            //            if (el && el.length) {
+            //                el = el[0];
+            //                var card = $($.parseHTML(response.responseText));
+            //                el.replaceWith(card[0]);
+            //                $(".fade").hide("slow");
+            //            }
+            //        }
+            //    })
+
+
+            //}
+
+
+    </script>
+
+

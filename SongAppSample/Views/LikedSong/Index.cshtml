@@ -1,0 +1,12 @@
+﻿@model IEnumerable< SongAppSample.Models.SongLiked>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Liked Songs</h2>
+@foreach(var song in Model)
+{
+    <h1>@song.Id</h1>
+}
+

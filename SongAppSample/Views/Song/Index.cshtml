@@ -1,0 +1,54 @@
+﻿@*@model IEnumerable<SongAppSample.Models.Song>*@
+@using SongAppSample.ViewModels
+@{
+    ViewBag.Title = "songs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+@*<form class="form-inline ">*@
+
+<div id="songs">
+
+</div>
+<form style=" position: -webkit-sticky; position: sticky;" class="form-inline" onsubmit="return submitSearch(event)">
+    <p>
+        <input type="submit" value="Search" />
+        <input id="searchInput" type="text" value="@ViewBag.searchValue" />
+    </p>
+</form>
+@if (!String.IsNullOrEmpty(ViewBag.searchValue))
+{
+    <Text>@ViewBag.Songs.Count songs found</Text>
+
+}
+
+<div id="table_songs">
+
+</div>
+
+@Html.Partial("_songsGrid", (IEnumerable<SongViewModel>)ViewBag.songs)
+
+
+
+<script>
+
+
+ //search Songs by search value
+
+    function submitSearch(e) {
+        e.preventDefault();
+            var el = document.getElementById('searchInput');
+            var txt = el.value;
+            if (txt) {
+                window.location.href = '@Url.Action("Index","Song")?id=' + txt;
+            } else {
+                window.location.href = '@Url.Action("Index","Song")';
+            }
+    }
+
+</script>
+
+
+

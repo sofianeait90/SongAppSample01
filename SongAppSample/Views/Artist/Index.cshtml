@@ -1,0 +1,26 @@
+﻿@using SongAppSample.ViewModels
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="artist-title">
+
+<h2 >@ViewBag.Artist.Name</h2>
+</div>
+
+
+
+
+
+@Html.Partial("_albumCard",(IEnumerable<AlbumViewModel>)ViewBag.Albums)
+
+
+@*@if (ViewBag.songs != null )
+{
+    @Html.Partial("_songList",(IEnumerable<SongViewModel>)ViewBag.songs)
+}
+else
+{
+    <h5>No songs </h5>
+}*@
+

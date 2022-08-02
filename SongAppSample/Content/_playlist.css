@@ -1,0 +1,42 @@
+﻿
+#play-list {
+    margin:30px;
+    
+}
+
+.btn_playlist {
+    background-color: rgb(112, 11, 246);
+    padding:10px;
+    min-width:15vh;
+    border-radius:10px;
+    color:azure;
+     border:none;
+    
+    
+    
+}
+    .btn_playlist:hover {
+        background-color: rgb(200, 8, 238);
+    }
+
+
+    .table_playlist {
+        cursor: pointer;
+        margin-top: 10px;
+        color: azure;
+    }
+
+#playlisttable {
+    border-radius:15px;
+    margin: 30px;
+    background-image: linear-gradient(to right, rgb(200, 8, 238),rgb(112, 11, 246));
+}
+
+tbody tr:hover {
+    background-color: rgb(150, 8, 230);
+}
+
+tbody tr:active{
+    background-color:aliceblue;
+    color:black;
+}

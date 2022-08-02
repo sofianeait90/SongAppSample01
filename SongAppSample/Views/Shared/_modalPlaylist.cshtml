@@ -1,0 +1,115 @@
+﻿
+    <div class="modal fade bd-example-modal-sm " tabindex="-1" role="dialog" id="myModal" onload="modalLoad()"  aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm"  id="myModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Selct PlayList </h4>
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">*@
+                        @*<span aria-hidden="true">&times;</span>
+                    </button>*@
+                </div>
+                <div class="modal-body">
+                    
+                    <ul id="playlist-list">
+                        
+                    </ul>
+                </div>
+                @*<div class="modal-footer">
+                    
+                </div>*@
+            </div>
+        </div>
+    </div>
+  
+<script >
+
+
+    var songId;
+    
+    function onplaylistaddClick() {
+
+    }
+    $(document).on("click", ".play-list-add", function () {
+        songId = $(this).data('id');
+       
+        $("#playlist-list #playlist-element").remove();
+        $(".modal-dialog #song-id").val(songId);
+
+
+        var songs = $.ajax({
+
+            url: "/api/playlist/List",
+            type: "GET",
+            success: function () {
+
+                var listOfSongs = songs.responseJSON;
+                listOfSongs.map(song =>
+                    $("#playlist-list").append(`<a > <li  id="playlist-element"  data-id=${song.Id}> ${song.Name}</li></a>`)
+                )
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        })
+
+    })
+
+
+
+    $("#playlist-list").on("click", "#playlist-element", function () {
+        const playlistid = $(this).data('id');
+        console.log(this);
+        var datatosend = { songid: songId, playlistid: playlistid };
+        $.ajax({
+            url: "/api/playlist/add",
+            type: "post",
+            data: datatosend,
+            success: function () {
+                
+                refreshCard(songId);
+               
+            },
+            error: function (response) {
+                console.log(response);
+                
+            }
+
+        })
+    })
+    function  refreshCard(id) {
+        var response = $.ajax({
+            url: "/song/getcard/" + id,
+            type: "GET",
+            success: () => {
+                var el = document.getElementsByClassName("card-" + id);
+                if (el && el.length) {
+                    el = el[0];
+                    var card = $($.parseHTML(response.responseText));
+                    el.replaceWith(card[0]);
+                    
+                    $(".fade").hide("slow");
+                }
+            }
+        })
+
+      
+    }
+</script>
+
+
+<style>
+    .modal-content {
+        background-image: linear-gradient(to right, rgb(200, 8, 238),rgb(112, 11, 246));
+        color:azure;
+    }
+    text{
+        margin-top:10px;
+    }
+    #playlist-list li {
+        text-decoration: none;
+        color: azure;
+        cursor: pointer;
+        list-style-type: none;
+    }
+
+</style>

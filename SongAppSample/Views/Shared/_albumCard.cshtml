@@ -1,0 +1,80 @@
+﻿@model IEnumerable< SongAppSample.ViewModels.AlbumViewModel>
+
+
+<Grid class="row">
+@foreach(var album in Model)
+{
+    <Grid class="col-lg-6">
+
+    <div class="card" id="album-card">
+        <Grid class="row"></Grid>
+        <Grid class="col-lg-7">
+
+        <img class="card-img-top" id="songimg" src="~/Images/song.jpg" alt="Card image cap">
+        </Grid>
+        <Grid class="col-lg-5">
+
+        <div class="card-body">
+            <text class="album-title" style="clear: both; display: inline-block; overflow: hidden; white-space: nowrap; max-width:100%"> @album.AlbumTitle </text>
+        </div>
+        </Grid>
+
+
+    </div>
+    </Grid>
+        }
+</Grid>
+<style>
+    /*.card {
+        min-height: 300px;
+        min-width: 250px;
+        color: azure;
+        elevation: lower;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 30px;
+        background-image: linear-gradient(to right, rgb(200, 8, 238),rgb(112, 11, 246));
+    }*/
+    #album-card {
+        width: 100%;
+        height:auto; 
+        cursor:pointer;
+    }
+    /*.card:hover::after {
+        
+    }*/
+    imageLogo {
+        fill: azure;
+    }
+
+    #album-card .card-img-top {
+        
+        border-radius:5%;
+      
+    }
+
+    
+
+    #album-card .card-body {
+/*        background-image: linear-gradient(to right, rgb(200, 8, 238),rgb(112, 11, 246));*/
+background-image:none;
+      
+    }
+
+   #album-card .album-title {
+        text-align: center;
+        padding:10px;
+        text-size-adjust:auto;
+        font-family:cursive,'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size:large;
+
+    }
+
+    .form-inline {
+    }
+
+    .btn_playlist {
+        background-color: transparent;
+        color: rgb(37, 37, 38);
+    }
+</style>

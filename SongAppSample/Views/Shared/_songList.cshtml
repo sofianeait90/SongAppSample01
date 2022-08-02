@@ -1,0 +1,88 @@
+﻿@model IEnumerable<SongAppSample.ViewModels.SongViewModel>
+<div class="table-songlist">
+
+<table class="table table-dark" id="song-table">
+    <thead>
+    <th></th>
+    <th scope="col">Title</th>
+    <th scope="col">Artist</th>
+    <th scope="col">Album</th>
+    <th scope="col">Genre</th>
+    <th scope="col">Playlist</th>
+    <th scope="col">Liked</th>
+
+    </thead>
+    <tbody class="song-body">
+        @foreach (var song in Model)
+        {
+            <tr onclick="">
+                <th scope="col"></th>
+                <th>@song.SongTitle</th>
+                <th>@song.ArtistName </th>
+                <th>@song.AlbumTitle</th>
+                <th>@song.GenreName</th>
+                
+                <th>
+                    @if (!String.IsNullOrEmpty(song.PlayListName))
+                    {
+                        @song.PlayListName
+                    }
+                    else
+                    {
+                        <i class="fas fa-plus play-list-add" type="button" data-id="@song.SongId" data-toggle="modal" data-target=".bd-example-modal-sm"> Add to   </i>
+                    }
+                </th>
+                <th><i class="far fa-heart"></i></th>
+
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+</div>
+<style >
+
+
+    .table-songlist {
+        cursor: pointer;
+        margin-top: 10px;
+        color: azure;
+    }
+
+    #playlisttable {
+        border-radius: 15px;
+        margin: 30px;
+        background-image: linear-gradient(to right, rgb(200, 8, 238),rgb(112, 11, 246));
+    }
+
+    tbody tr:hover {
+        background-color: rgb(150, 8, 230);
+    }
+
+    tbody tr:active {
+        background-color: aliceblue;
+        color: black;
+    } {
+        cursor: pointer;
+        margin-top: 10px;
+        color: azure;
+    }
+
+    #song-table {
+        border-radius: 15px;
+        margin: 30px;
+        background-image: linear-gradient(to right, rgb(200, 8, 238),rgb(112, 11, 246));
+    }
+
+    tbody tr:hover {
+        background-color: rgb(150, 8, 230);
+    }
+
+    tbody tr:active {
+        background-color: aliceblue;
+        color: black;
+    }
+</style>

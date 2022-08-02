@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SongAppSample.Models.PlayList>
+@{
+    ViewBag.Title = "PlayList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    
+        <button type="button" class="btn_playlist" onclick=" addPlayList() ">New</button>
+    
+    <div class="row" id="play-list" >
+        @foreach (var playlist in Model)
+        {
+            <div class="col-md-3" accesskey="@playlist.Id" style="cursor:pointer"   onclick="return clickButon(event)">
+                @Html.Partial("_playlist",playlist)
+             </div>
+
+                }
+
+
+            </div>
+    <script>
+    function clickButon(e) {
+        var key = e.currentTarget.accessKey;
+        window.location.href = '@Url.Action("Index","PlayListDetail")?id='+key;
+
+    }
+
+    function addPlayList() {
+        
+        window.location.href = '@Url.Action("Create","PlayList")';
+       
+    }
+    </script>
+
+
+

@@ -1,0 +1,17 @@
+﻿@model SongAppSample.Models.PlayList
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "PlayList"))
+{
+    <div class="form-group">
+        @Html.LabelFor(pl => pl.Name)
+        @Html.TextBoxFor(pl => pl.Name, new { @class = "form-control" })
+
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+

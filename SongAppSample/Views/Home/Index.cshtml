@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+   
+    <div class="container" id="container-event">
+        <h3 class="date-event" >@String.Format("{0:D}", ViewBag.Event.DateEvent)</h3>
+        <div class="container-title">@ViewBag.Event.Name </div>
+        <div class="description">@ViewBag.Event.Description</div>
+
+    </div>
+
+
+
+    <style>
+
+        body {
+            background: linear-gradient(to left, #7700aa, #8800ff);
+        }
+        @@keyframes
+                example {
+                    from
+
+                {
+                    color:rgb(137, 118, 248)  ;
+                }
+
+                to {
+                    color: rgb(247, 9, 252);
+                }
+
+                }
+
+        .date-event {
+            text-align:end;
+            color: rgb(247, 9, 252);
+            margin:30px;
+            animation-name: example;
+            animation-duration: 10s;
+        }
+
+                #container-event {
+                    height: 90vh;
+                    width: 100%;
+                    margin: 0;
+                    background-repeat:no-repeat;
+                    background-size: cover;
+                    /*        background-image: url('~/Images/concertImage.jpg');*/
+                    background-image: url('../Images/concertImage.jpg');
+                    filter: brightness(50%);
+                    cursor: pointer;
+                }
+
+                    #container-event:hover {
+                        filter: brightness(65%);
+                        transform: rotate(0.3deg);
+                        transition: transform 0.5s;
+                    }
+
+
+
+                    #container-event .container-title {
+                        margin-top: 10%;
+                        margin-left: 5%;
+                        font-size: 60px;
+                        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                        color: azure;
+                        /*        animation:10s ease-out 10s steps(1, start) slideInFromLeft;*/
+                    }
+
+                    #container-event .description {
+                        margin-left: 20%;
+                        padding: 3%;
+                        font-size: xx-large;
+                        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                        font-style: italic;
+                    }
+    </style>

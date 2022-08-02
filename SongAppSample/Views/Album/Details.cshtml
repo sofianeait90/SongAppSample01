@@ -1,0 +1,12 @@
+﻿@using SongAppSample.ViewModels
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Album.Title </h2>
+
+@Html.Partial("_songList", (IEnumerable<SongViewModel>)ViewBag.Songs);
+
+
+
